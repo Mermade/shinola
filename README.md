@@ -1,6 +1,8 @@
 # shinola
 Shins-as-a-service. Generate beautiful [Shins](https://github.com/mermade/shins) Slate-compatible API documentation on the fly, from markdown or OpenApi / Swagger definitions
 
+![logo](https://mermade.github.io/shinola/logo.png)
+
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 ## Then connect and submit a request like:
