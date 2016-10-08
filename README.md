@@ -7,8 +7,10 @@ Shins-as-a-service. Generate beautiful [Shins](https://github.com/mermade/shins)
 
 ## Then connect and submit a request like:
 
-* `http://shinola.herokuapp.com/json?url=http://url.to.swagger.json`
-* `http://shinola.herokuapp.com/yaml?url=http://url.to.swagger.yaml`
-* `http://shinola.herokuapp.com/markdown?url=http://url.to.markdown.md`
+* `http://shinola.herokuapp.com/shins?url=http://url.to.markdown.md`
+* `http://shinola.herokuapp.com/openapi?url=http://url.to.openapi.json-or-yaml`
+* `http://shinola.herokuapp.com/openapi?url=http://url.to.openapi.json-or-yaml&raw=true`
 
-The server runs locally on port 5678 or as specified in the `PORT` environment variable
+The last call returns the converted markdown, not the rendered HTML.
+
+The server runs by default on port 5678 or as specified in the `PORT` environment variable
