@@ -22,9 +22,10 @@
   "author": "Mike Ralphson",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.13.3",
+    "body-parser": "^1.15.2",
     "compression": "^1.6.2",
     "ejs": "^2.5.1",
+    "express": "^4.13.3",
     "shins": "latest",
     "widdershins": "latest"
   }

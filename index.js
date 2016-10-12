@@ -2,6 +2,7 @@ var path = require('path');
 
 var express = require('express');
 var compression = require('compression');
+var bodyParser = require('body-parser');
 var yaml = require('js-yaml');
 
 var shins = require('shins/index.js');
@@ -20,6 +21,7 @@ function checkParam(param,message,res) {
 
 var app = express();
 app.use(compression());
+app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
 	res.sendFile(path.join(__dirname, 'index.html'))
@@ -39,7 +41,26 @@ app.get('/shins', function(req, res) {
         });
     }
 });
-app.get('/openapi', function (req, res) {
+app.post('/openapi', function(req, res) {
+    var obj = req.body;
+    if (typeof obj === 'object') {
+        var options = {};
+        var md = widdershins.convert(obj, options);
+        if (typeof req.query.raw !== 'undefined') {
+            res.send(md);
+        }
+        else {
+            shins.render(md, function (err, str) {
+                res.send(str);
+            });
+        }
+    }
+    else {
+        res.status(500);
+        res.end();
+    }
+});
+app.get('/openapi', function(req, res) {
     if (checkParam(req.query.url,'Please supply a URL parameter',res)) {
         fetch.get(req.query.url, {}, {}, function (err, resp, obj) {
             if (obj) {
