@@ -84,9 +84,9 @@ app.get('/openapi', function(req, res) {
                     }
                     catch (ex) {}
                 }
+				res.set('Access-Control-Allow-Origin','*');
                 if (typeof obj == 'object') {
                     var md = widdershins.convert(obj, options);
-					res.set('Access-Control-Allow-Origin','*');
                     if (typeof req.query.raw !== 'undefined') {
                         res.send(md);
                     }
