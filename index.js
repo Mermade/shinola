@@ -51,10 +51,10 @@ app.get('/shins', function(req, res) {
 });
 app.post('/openapi', function(req, res) {
     var obj = req.body;
+	res.set('Access-Control-Allow-Origin','*');
     if (typeof obj === 'object') {
         var options = {};
         var md = widdershins.convert(obj, options);
-		res.set('Access-Control-Allow-Origin','*');
         if (typeof req.query.raw !== 'undefined') {
             res.send(md);
         }
