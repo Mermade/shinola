@@ -23,6 +23,14 @@ var app = express();
 app.use(compression());
 app.use(bodyParser.json());
 
+app.options('*',function(req,res,next){
+    res.set('Access-Control-Allow-Origin',req.headers['origin']||'*');
+    res.set('Access-Control-Allow-Methods','GET, POST, HEAD, OPTIONS');
+    res.set('Access-Control-Allow-Headers',req.headers['access-control-request-headers']||
+        'Content-Type, Authorization, Content-Length, X-Requested-With');
+    res.sendStatus(204);
+});
+
 app.get('/', function (req, res) {
 	res.sendFile(path.join(__dirname, 'index.html'))
 });
@@ -82,6 +90,7 @@ app.get('/openapi', function(req, res) {
                     }
                     else {
                         shins.render(md, function (err, str) {
+							res.set('Access-Control-Allow-Origin','*');
                             res.send(str);
                         });
                     }
