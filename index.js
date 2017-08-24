@@ -54,6 +54,7 @@ app.post('/openapi', function(req, res) {
     if (typeof obj === 'object') {
         var options = {};
         var md = widdershins.convert(obj, options);
+		res.set('Access-Control-Allow-Origin','*');
         if (typeof req.query.raw !== 'undefined') {
             res.send(md);
         }
@@ -85,12 +86,12 @@ app.get('/openapi', function(req, res) {
                 }
                 if (typeof obj == 'object') {
                     var md = widdershins.convert(obj, options);
+					res.set('Access-Control-Allow-Origin','*');
                     if (typeof req.query.raw !== 'undefined') {
                         res.send(md);
                     }
                     else {
                         shins.render(md, function (err, str) {
-							res.set('Access-Control-Allow-Origin','*');
                             res.send(str);
                         });
                     }
