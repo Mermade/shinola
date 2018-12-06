@@ -91,15 +91,16 @@ app.get('/openapi', function(req, res) {
 				}
 				res.set('Access-Control-Allow-Origin','*');
 				if (typeof obj == 'object') {
-					var md = widdershins.convert(obj, options);
-					if (typeof req.query.raw !== 'undefined') {
-						res.send(md);
-					}
-					else {
-						shins.render(md, function (err, str) {
-							res.send(str);
-						});
-					}
+					widdershins.convert(obj, options, function(err, md) {
+						if (typeof req.query.raw !== 'undefined') {
+							res.send(md);
+						}
+						else {
+							shins.render(md, function (err, str) {
+								res.send(str);
+							});
+						}
+					});
 				}
 				else {
 					res.status(500);
