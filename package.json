@@ -27,6 +27,6 @@
     "ejs": "^2.5.1",
     "express": "^4.13.3",
     "shins": "latest",
-    "widdershins": "latest"
+    "widdershins": "^3.6.6"
   }
 }
