@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -27,6 +29,8 @@
     "ejs": "^2.5.1",
     "express": "^4.13.3",
     "shins": "^2.3.2-3",
-    "widdershins": "^3.6.6"
-  }
+    "widdershins": "^3.6.6",
+    "snyk": "^1.192.4"
+  },
+  "snyk": true
 }
